@@ -2,9 +2,6 @@
 // >>> Nur hier die Version ändern – alles andere passt sich automatisch an. <<<
 const VERSION = '0.1.0';
 
-// Dateiendung für Windows: 'msi' (WiX) oder 'exe' (NSIS) – je nachdem, was du baust.
-const WIN_EXT = 'msi';
-
 const DOWNLOADS = {
   mac: {
     label: 'Für macOS herunterladen',
@@ -15,8 +12,10 @@ const DOWNLOADS = {
   },
   windows: {
     label: 'Für Windows herunterladen',
-    sub: `${WIN_EXT.toUpperCase()} Installer · Version ${VERSION}`,
-    file: `assets/downloads/Haushaltsbuch_${VERSION}_x64.${WIN_EXT}`,
+    sub: `Installer (.exe) · Version ${VERSION}`,
+    // Exakt der Name, den der GitHub-Actions-Windows-Build (NSIS) erzeugt:
+    //   Haushaltsbuch_<version>_x64-setup.exe → kein Umbenennen beim Upload nötig.
+    file: `assets/downloads/Haushaltsbuch_${VERSION}_x64-setup.exe`,
     iconClass: 'win',
     name: 'Windows',
   },
